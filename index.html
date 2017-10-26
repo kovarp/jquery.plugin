@@ -1,0 +1,43 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Custom jQuery plugin demo page</title>
+	</head>
+	<body>
+
+		<h1>Custom jQuery plugin</h1>
+
+		<p>
+			This is the demo page of your Custom jQuery plugin.
+		</p>
+
+		<button data-target="#target1">Click me</button>
+
+		<div id="target1" class="my-target">I'm the target element.</div>
+
+		<br>
+
+		<button data-target="#target2">Click me</button>
+
+		<div id="target2" class="my-target" data-background="green">I'm the target element.</div>
+
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+				integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+		<script src="jquery.plugin.js"></script>
+
+		<script>
+			$('.my-target').each(function() {
+				var target = $(this);
+
+				target.jqueryPlugin({
+					background: target.data('background')
+				});
+			});
+
+			$('button').on('click', function() {
+				$($(this).data('target')).jqueryPlugin('toggle');
+			});
+		</script>
+
+	</body>
+</html>
